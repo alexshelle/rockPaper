@@ -18,6 +18,9 @@ const computerSelection = computerPlay();
 let playerSelection = prompt("choose rock paper scissors");
 playerSelection = playerSelection.toLowerCase();
 
+let playerWinCount = 0;
+let computerWinCount = 0;
+
 
 function playRound(computerSelection, playerSelection){
     if (computerSelection == playerSelection){
@@ -26,11 +29,13 @@ function playRound(computerSelection, playerSelection){
     else if (computerSelection == "rock" && playerSelection == "scissors" || 
                 computerSelection == "paper" && playerSelection == "rock" ||
                 computerSelection == "scissors" && playerSelection == "paper"){
+        computerWinCount++;
         return "computer wins"
     }
     else if (computerSelection == "scissors" && playerSelection == "rock" ||
                 computerSelection == "rock" && playerSelection == "paper" ||
                 computerSelection == "paper" && playerSelection == "scissors"){
+        playerWinCount++;
         return "player wins"
     }
 }
@@ -43,6 +48,7 @@ function game (){
 
 //console.log(playRound(computerSelection, playerSelection))
 
-let result = playRound(computerSelection, playerSelection) + " computer picked: " + computerSelection + " player picked: " + playerSelection;
+let result = playRound(computerSelection, playerSelection) + " computer picked: " + computerSelection + " player picked: " + playerSelection
+                + " player win count: " + playerWinCount + " computer win count: " + computerWinCount;
 
 document.getElementById('result').innerHTML = result;
